@@ -1,5 +1,16 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+header {
+    align-self: center;
+    border: solid black;
+    padding: 20px 263px 20px 263px;
+}
 #button-container {
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(4, 150px);
     grid-auto-rows: 150px;
     grid-gap: 1px;
