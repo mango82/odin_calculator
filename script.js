@@ -5,12 +5,19 @@ const clearButton = document.getElementById("clear")
 const deleteButton = document.getElementById("delete")
 const operatorButtons = document.querySelectorAll(".operator")
 const equalButton = document.getElementById("equal-sign")
+const decimalButton = document.getElementById("decimal")
 
 for (let i = 0; i < numberButtons.length; i++){
     numberButtons[i].addEventListener("click", e => {
         currentOperand.innerHTML += numberButtons[i].innerHTML
     })
 }
+
+decimalButton.addEventListener("click", e => {
+    if (currentOperand.innerHTML.includes(".") === false){
+        currentOperand.innerHTML += decimalButton.innerHTML
+    }
+})
 
 clearButton.addEventListener("click", e => {
     currentOperand.innerHTML = ""
@@ -35,7 +42,6 @@ for (let i = 0; i < operatorButtons.length; i++) {
 
 equalButton.addEventListener("click", e => {
     console.log(operate())
-    
 })
 
 function add(num1, num2) {
@@ -57,10 +63,9 @@ function divide(num1, num2) {
 function operate(operator){
     operator = previousOperand.innerHTML.charAt(previousOperand.innerHTML.length - 1)
     num1 = previousOperand.innerHTML.slice(0, -1)
-    num1 = parseInt(num1)
-    
+    num1 = parseFloat(num1)
     num2 = currentOperand.innerHTML
-    num2 = parseInt(num2)
+    num2 = parseFloat(num2)
     let result = 0
     if (operator === '÷') {
         result = divide(num1, num2)
